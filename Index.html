@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kadin Alveo Madrid – Ingeniera Informática & Analista de Datos</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+
+/* ============================================================
+   CSS VARIABLES – Cambia colores aquí fácilmente
+   ============================================================ */
+:root {
+  --black:      #0a0a0a;
+  --dark:       #111111;
+  --card-bg:    #171717;
+  --border:     #242424;
+  --mid:        #3a3a3a;
+  --muted:      #888888;
+  --light:      #c8c8c8;
+  --white:      #f5f5f5;
+  --blue:       #1a4fdb;       /* Azul oscuro principal */
+  --blue-light: #3d6ef0;       /* Azul hover / acento */
+  --blue-glow:  rgba(26,79,219,0.15);
+  --font-head:  'Syne', sans-serif;
+  --font-body:  'DM Sans', sans-serif;
+}
+
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--black);
+  color: var(--light);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+
+/* ============================================================
+   NAVIGATION – fija, minimalista
+   ============================================================ */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: rgba(10,10,10,0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 5vw;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-logo {
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: 1rem;
+  letter-spacing: 0.08em;
+  color: var(--white);
+}
+.nav-logo span { color: var(--blue-light); }
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.nav-links a {
+  color: var(--muted);
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--white); }
+
+/* ============================================================
+   SECTION WRAPPER – cada sección usa esto
+   ============================================================ */
+section {
+  padding: 100px 5vw;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+section + section { padding-top: 60px; }
+
+/* ============================================================
+   SECTION LABEL (etiqueta pequeña encima de cada título)
+   ============================================================ */
+.label {
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--blue-light);
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.label::before {
+  content: '';
+  display: inline-block;
+  width: 24px; height: 1px;
+  background: var(--blue-light);
+}
+
+/* ============================================================
+   HEADINGS
+   ============================================================ */
+h1, h2, h3 { font-family: var(--font-head); color: var(--white); }
+h1 { font-size: clamp(2.8rem, 7vw, 5.5rem); font-weight: 800; line-height: 1.05; letter-spacing: -0.02em; }
+h2 { font-size: clamp(1.9rem, 4vw, 2.8rem); font-weight: 700; line-height: 1.1; }
+h3 { font-size: 1.1rem; font-weight: 700; }
+
+/* ============================================================
+   DIVIDER
+   ============================================================ */
+.divider {
+  width: 100%;
+  height: 1px;
+  background: var(--border);
+  margin: 0 auto;
+}
+
+/* ================================================================
+   HERO
+   ================================================================ */
+#hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-top: 120px;
+  padding-bottom: 80px;
+  max-width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Fondo: número grande decorativo */
+.hero-bg-text {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-head);
+  font-size: clamp(120px, 25vw, 280px);
+  font-weight: 800;
+  color: rgba(255,255,255,0.02);
+  letter-spacing: -0.05em;
+  user-select: none;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.hero-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 5vw;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 60px;
+  align-items: end;
+}
+
+.hero-tag {
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--blue-light);
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+.hero-name { margin-bottom: 1.2rem; }
+
+.hero-roles {
+  font-size: 1rem;
+  color: var(--muted);
+  font-weight: 300;
+  margin-bottom: 2.5rem;
+  line-height: 2;
+}
+.hero-roles strong {
+  color: var(--light);
+  font-weight: 500;
+}
+
+.hero-contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 2rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+.hero-contact a { transition: color 0.2s; }
+.hero-contact a:hover { color: var(--white); }
+
+/* ---- Foto / Placeholder ---- */
+.hero-photo {
+  position: relative;
+}
+.photo-frame {
+  width: 100%;
+  aspect-ratio: 3/4;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ============================================================
+   FOTO – INSTRUCCIÓN:
+   Para agregar tu foto, reemplaza el bloque <div class="photo-placeholder">
+   con: <img src="TU_FOTO.jpg" alt="Kadin Alveo" style="width:100%;height:100%;object-fit:cover;">
+   ============================================================ */
+.photo-placeholder {
+  text-align: center;
+  color: var(--mid);
+  font-size: 0.78rem;
+  letter-spacing: 0.05em;
+  padding: 1rem;
+}
+.photo-placeholder svg { margin: 0 auto 0.8rem; opacity: 0.3; }
+
+.photo-accent {
+  position: absolute;
+  bottom: -10px; right: -10px;
+  width: 60px; height: 60px;
+  background: var(--blue);
+  border-radius: 2px;
+  z-index: -1;
+}
+
+/* ============================================================
+   SOBRE MÍ / PERFIL
+   ============================================================ */
+#sobre {
+  border-top: 1px solid var(--border);
+}
+.sobre-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+  margin-top: 3rem;
+}
+.sobre-text p {
+  color: var(--muted);
+  font-weight: 300;
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+}
+.sobre-text p strong { color: var(--light); font-weight: 500; }
+
+.sobre-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+}
+.stat-item {
+  background: var(--card-bg);
+  padding: 1.5rem;
+}
+.stat-num {
+  font-family: var(--font-head);
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--white);
+  line-height: 1;
+  margin-bottom: 0.3rem;
+}
+.stat-num span { color: var(--blue-light); }
+.stat-label {
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+/* ============================================================
+   HABILIDADES / SKILLS
+   ============================================================ */
+#habilidades { border-top: 1px solid var(--border); }
+
+.skills-grid {
+  margin-top: 3rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+}
+.skill-chip {
+  background: var(--card-bg);
+  padding: 1.2rem 1rem;
+  text-align: center;
+  transition: background 0.2s;
+}
+.skill-chip:hover { background: var(--dark); }
+.skill-icon { font-size: 1.4rem; margin-bottom: 0.4rem; }
+.skill-name {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--light);
+}
+
+/* ============================================================
+   EXPERIENCIA
+   ============================================================ */
+#experiencia { border-top: 1px solid var(--border); }
+
+.exp-list { margin-top: 3rem; display: flex; flex-direction: column; gap: 2px; }
+
+.exp-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  padding: 2rem 2rem 2rem 2rem;
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 2rem;
+  transition: border-color 0.2s;
+}
+.exp-card:hover { border-color: var(--blue); }
+
+.exp-meta { padding-top: 0.2rem; }
+.exp-period {
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  color: var(--blue-light);
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+.exp-company {
+  font-family: var(--font-head);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 0.2rem;
+}
+.exp-location { font-size: 0.75rem; color: var(--mid); }
+
+.exp-role {
+  font-family: var(--font-head);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 1rem;
+}
+.exp-bullets {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.exp-bullets li {
+  font-size: 0.875rem;
+  color: var(--muted);
+  font-weight: 300;
+  padding-left: 1rem;
+  position: relative;
+}
+.exp-bullets li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--blue-light);
+  font-size: 0.75rem;
+  top: 0.2rem;
+}
+
+/* ============================================================
+   PROYECTOS
+   ============================================================ */
+#proyectos { border-top: 1px solid var(--border); }
+
+.projects-grid {
+  margin-top: 3rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+}
+
+.project-card {
+  background: var(--card-bg);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  transition: background 0.2s;
+  min-height: 280px;
+}
+.project-card:hover { background: #1c1c1c; }
+
+/* ---- Imagen del proyecto ---- */
+.project-img {
+  width: 100%;
+  height: 160px;
+  background: var(--dark);
+  border: 1px dashed var(--mid);
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+/*
+  INSTRUCCIÓN PARA IMÁGENES DE PROYECTOS:
+  Reemplaza el contenido dentro de cada .project-img con:
+  <img src="imagen_proyecto.jpg" alt="Nombre del proyecto" style="width:100%;height:100%;object-fit:cover;">
+*/
+.project-img-placeholder {
+  font-size: 0.72rem;
+  color: var(--mid);
+  letter-spacing: 0.05em;
+  text-align: center;
+  padding: 0.5rem;
+}
+
+.project-num {
+  font-family: var(--font-head);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  color: var(--blue-light);
+}
+.project-title {
+  font-family: var(--font-head);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--white);
+}
+.project-desc {
+  font-size: 0.85rem;
+  color: var(--muted);
+  font-weight: 300;
+  flex: 1;
+}
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: auto;
+}
+.tag {
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 0.25rem 0.6rem;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  border-radius: 2px;
+}
+
+/* ============================================================
+   DISEÑO DIGITAL – fila de imágenes
+   ============================================================ */
+#diseno { border-top: 1px solid var(--border); }
+
+.design-gallery {
+  margin-top: 3rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+}
+.design-item {
+  background: var(--card-bg);
+  aspect-ratio: 4/3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+/*
+  INSTRUCCIÓN PARA GALERÍA DE DISEÑO:
+  Dentro de cada .design-item agrega:
+  <img src="diseño1.jpg" alt="Diseño" style="width:100%;height:100%;object-fit:cover;">
+*/
+.design-placeholder {
+  font-size: 0.7rem;
+  color: var(--mid);
+  letter-spacing: 0.06em;
+  text-align: center;
+}
+
+/* ============================================================
+   CERTIFICACIONES
+   ============================================================ */
+#certificaciones { border-top: 1px solid var(--border); }
+
+.certs-grid {
+  margin-top: 3rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+}
+.cert-card {
+  background: var(--card-bg);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  transition: background 0.2s;
+}
+.cert-card:hover { background: #1c1c1c; }
+.cert-issuer {
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--blue-light);
+  font-weight: 600;
+}
+.cert-name {
+  font-size: 0.9rem;
+  color: var(--white);
+  font-weight: 500;
+  line-height: 1.4;
+}
+.cert-year { font-size: 0.75rem; color: var(--mid); }
+
+/* ============================================================
+   EDUCACIÓN
+   ============================================================ */
+#educacion { border-top: 1px solid var(--border); }
+
+.edu-grid {
+  margin-top: 3rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+}
+.edu-card {
+  background: var(--card-bg);
+  padding: 2rem;
+}
+.edu-degree {
+  font-family: var(--font-head);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 0.4rem;
+}
+.edu-institution {
+  font-size: 0.85rem;
+  color: var(--blue-light);
+  font-weight: 500;
+  margin-bottom: 0.3rem;
+}
+.edu-year { font-size: 0.78rem; color: var(--mid); }
+
+/* ============================================================
+   CONTACTO / CIERRE
+   ============================================================ */
+#contacto {
+  border-top: 1px solid var(--border);
+  text-align: center;
+}
+.contact-quote {
+  font-family: var(--font-head);
+  font-size: clamp(1.2rem, 3vw, 2rem);
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.3;
+  max-width: 640px;
+  margin: 0 auto 3rem;
+}
+.contact-quote em {
+  color: var(--blue-light);
+  font-style: normal;
+}
+
+.contact-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 5rem;
+}
+.contact-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border: 1px solid var(--border);
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: var(--light);
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+.contact-btn:hover {
+  background: var(--blue);
+  border-color: var(--blue);
+  color: var(--white);
+}
+.contact-btn.primary {
+  background: var(--blue);
+  border-color: var(--blue);
+  color: var(--white);
+}
+.contact-btn.primary:hover { background: var(--blue-light); border-color: var(--blue-light); }
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 1.5rem 5vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.75rem;
+  color: var(--mid);
+  max-width: 100%;
+}
+
+/* ============================================================
+   RESPONSIVE – ajustes para móvil
+   ============================================================ */
+@media (max-width: 768px) {
+  .hero-grid { grid-template-columns: 1fr; }
+  .hero-photo { display: none; }   /* Puedes mostrarla si quieres */
+  .sobre-grid { grid-template-columns: 1fr; }
+  .exp-card { grid-template-columns: 1fr; gap: 0.8rem; }
+  .design-gallery { grid-template-columns: 1fr 1fr; }
+  .edu-grid { grid-template-columns: 1fr; }
+  .nav-links { display: none; }   /* Menú hamburguesa opcional */
+}
+
+/* ============================================================
+   ANIMACIONES SUTILES – entrada al hacer scroll
+   ============================================================ */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     NAVEGACIÓN
+     ============================================================ -->
+<nav>
+  <div class="nav-logo">Kadin <span>Alveo</span></div>
+  <ul class="nav-links">
+    <li><a href="#sobre">Perfil</a></li>
+    <li><a href="#habilidades">Skills</a></li>
+    <li><a href="#experiencia">Experiencia</a></li>
+    <li><a href="#proyectos">Proyectos</a></li>
+    <li><a href="#certificaciones">Certificaciones</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+</nav>
+
+
+<!-- ============================================================
+     HERO / PORTADA
+     ============================================================ -->
+<div id="hero">
+  <div class="hero-bg-text">KA</div>
+  <div class="hero-inner">
+    <div class="hero-grid">
+
+      <!-- Texto izquierdo -->
+      <div>
+        <p class="hero-tag">Panamá · Disponible para proyectos</p>
+        <h1 class="hero-name">Kadin<br>Alveo</h1>
+        <div class="hero-roles">
+          <strong>Ingeniera Informática</strong><br>
+          Analista de Datos · Desarrollo & Automatización<br>
+          Diseño Digital · Soporte IT
+        </div>
+        <div class="hero-contact">
+          <a href="tel:60287688">📞 6028-7688</a>
+          <a href="mailto:kadin02.a@gmail.com">✉ kadin02.a@gmail.com</a>
+          <!--
+            INSTRUCCIÓN: Cambia el href de abajo con tu URL real de LinkedIn
+          -->
+          <a href="https://www.linkedin.com/in/kadin-alveo-85704319b/" target="_blank">🔗 LinkedIn</a>
+        </div>
+      </div>
+
+      <!-- Foto derecha -->
+      <div class="hero-photo">
+        <div class="photo-frame">
+          <!--
+          =====================================================
+          FOTO DE PERFIL – INSTRUCCIÓN:
+          Reemplaza este bloque con tu foto así:
+
+          <img src="foto_kadin.jpg"
+               alt="Kadin Alveo"
+               style="width:100%;height:100%;object-fit:cover;object-position:top;">
+
+          =====================================================
+          -->
+          <div class="photo-placeholder">
+            <svg width="48" height="48" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+            Foto de perfil<br>aquí
+          </div>
+          
+        </div>
+        <div class="photo-accent"></div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+
+<!-- ============================================================
+     PERFIL PROFESIONAL
+     ============================================================ -->
+<section id="sobre">
+  <div class="label">Perfil profesional</div>
+  <h2>Tecnología, datos<br>y creatividad.</h2>
+
+  <div class="sobre-grid fade-in">
+    <div class="sobre-text">
+      <p>
+        Ingeniera informática y analista de datos con experiencia en
+        <strong>automatización de procesos, desarrollo de software</strong> y
+        análisis de información orientado a decisiones estratégicas.
+      </p>
+      <p>
+        Especializada en <strong>Python, ETL, Power BI y Excel avanzado</strong>.
+        Combino pensamiento analítico con visión creativa para construir
+        soluciones que realmente impactan el negocio.
+      </p>
+      <p>
+        Experiencia adicional en diseño publicitario, branding digital,
+        inteligencia artificial generativa y gestión tecnológica empresarial.
+      </p>
+    </div>
+
+    <!-- Estadísticas rápidas -->
+    <div class="sobre-stats">
+      <div class="stat-item">
+        <div class="stat-num">5<span>to</span></div>
+        <div class="stat-label">Año Ing. Informática</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">3<span>+</span></div>
+        <div class="stat-label">Años de experiencia</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">7<span>+</span></div>
+        <div class="stat-label">Certificaciones</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">12<span>+</span></div>
+        <div class="stat-label">Skills técnicos</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+
+<!-- ============================================================
+     HABILIDADES
+     ============================================================ -->
+<section id="habilidades">
+  <div class="label">Stack técnico</div>
+  <h2>Habilidades</h2>
+
+  <div class="skills-grid fade-in">
+    <!-- Modifica, agrega o quita chips según tus skills -->
+    <div class="skill-chip"><div class="skill-icon">🐍</div><div class="skill-name">Python</div></div>
+    <div class="skill-chip"><div class="skill-icon">📊</div><div class="skill-name">Power BI</div></div>
+    <div class="skill-chip"><div class="skill-icon">🗃️</div><div class="skill-name">SQL</div></div>
+    <div class="skill-chip"><div class="skill-icon">🔄</div><div class="skill-name">ETL</div></div>
+    <div class="skill-chip"><div class="skill-icon">📉</div><div class="skill-name">Excel</div></div>
+    <div class="skill-chip"><div class="skill-icon">🐧</div><div class="skill-name">Linux</div></div>
+    <div class="skill-chip"><div class="skill-icon">🌐</div><div class="skill-name">Redes</div></div>
+    <div class="skill-chip"><div class="skill-icon">💾</div><div class="skill-name">Bases de Datos</div></div>
+    <div class="skill-chip"><div class="skill-icon">⚙️</div><div class="skill-name">Automatización</div></div>
+    <div class="skill-chip"><div class="skill-icon">🤖</div><div class="skill-name">IA Generativa</div></div>
+    <div class="skill-chip"><div class="skill-icon">🎨</div><div class="skill-name">Diseño Gráfico</div></div>
+    <div class="skill-chip"><div class="skill-icon">🛠️</div><div class="skill-name">Soporte IT</div></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+
+<!-- ============================================================
+     EXPERIENCIA PROFESIONAL
+     ============================================================ -->
+<section id="experiencia">
+  <div class="label">Trayectoria</div>
+  <h2>Experiencia</h2>
+
+  <div class="exp-list fade-in">
+
+    <!-- ---- Tigo Panamá ---- -->
+    <div class="exp-card">
+      <div class="exp-meta">
+        <div class="exp-period">2024 – Actualidad</div>
+        <div class="exp-company">Tigo Panamá</div>
+        <div class="exp-location">📍 Panamá</div>
+      </div>
+      <div>
+        <div class="exp-role">Analista de Datos</div>
+        <ul class="exp-bullets">
+          <li>Automatización de procesos ETL para integración de datos multi-fuente</li>
+          <li>Análisis de grandes volúmenes de información y generación de reportes estratégicos</li>
+          <li>Creación y mantenimiento de dashboards para visualización de KPIs</li>
+          <li>Optimización de procesos internos mediante Python y herramientas de análisis</li>
+          <li>Transformación de datos desde Excel, bases de datos y otras fuentes</li>
+          <li>Identificación de oportunidades de mejora basadas en datos</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ---- Mercedes / Alianza Residencial ---- -->
+    <div class="exp-card">
+      <div class="exp-meta">
+        <div class="exp-period">Anterior</div>
+        <div class="exp-company">Mercedes Bienes Raíces / Alianza Residencial</div>
+        <div class="exp-location">📍 Panamá</div>
+      </div>
+      <div>
+        <div class="exp-role">Desarrollo & Soporte IT</div>
+        <ul class="exp-bullets">
+          <li>Desarrollo del sistema "Alianza Residencial" para administración de propiedades horizontales</li>
+          <li>Módulos de propietarios, finanzas, reportes y gestión administrativa</li>
+          <li>Administración y configuración de sistemas internos</li>
+          <li>Soporte IT, mantenimiento y optimización digital</li>
+          <li>Desarrollo de dashboards administrativos y contables</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ---- Orient Travel ---- -->
+    <div class="exp-card">
+      <div class="exp-meta">
+        <div class="exp-period">Anterior</div>
+        <div class="exp-company">Orient Travel PTY</div>
+        <div class="exp-location">📍 Panamá</div>
+      </div>
+      <div>
+        <div class="exp-role">Diseño Publicitario & Branding</div>
+        <ul class="exp-bullets">
+          <li>Diseño de piezas publicitarias para campañas turísticas</li>
+          <li>Branding digital e identidad visual corporativa</li>
+          <li>Creación de contenido para redes sociales y marketing digital</li>
+          <li>Campañas promocionales visuales orientadas al turismo</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ---- Experiencias anteriores breves ---- -->
+    <div class="exp-card">
+      <div class="exp-meta">
+        <div class="exp-period">2019 – 2022</div>
+        <div class="exp-company">JL Systems · Drink Sport Bar · Copias 2x5</div>
+        <div class="exp-location">📍 Panamá</div>
+      </div>
+      <div>
+        <div class="exp-role">Soporte IT · Administrativo · Atención al cliente</div>
+        <ul class="exp-bullets">
+          <li>Mantenimiento preventivo de equipos informáticos y configuración de redes</li>
+          <li>Gestión de inventarios, planillas y reportes de ventas</li>
+          <li>Atención al cliente y coordinación con proveedores</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+
+<!-- ============================================================
+     PROYECTOS DESTACADOS
+     ============================================================ -->
+<section id="proyectos">
+  <div class="label">Portafolio técnico</div>
+  <h2>Proyectos destacados</h2>
+
+  <div class="projects-grid fade-in">
+
+    <!-- Proyecto 1 -->
+    <div class="project-card">
+      <div class="project-img">
+        <!--
+          INSTRUCCIÓN – Imagen del proyecto "Alianza Residencial":
+          <img src="alianza_screenshot.jpg" alt="Alianza Residencial" style="width:100%;height:100%;object-fit:cover;">
+        -->
+        <div class="project-img-placeholder">📸 Captura del sistema /<br>mockup de dashboard aquí</div>
+      </div>
+      <div class="project-num">01</div>
+      <div class="project-title">Sistema Alianza Residencial</div>
+      <div class="project-desc">Plataforma de administración para propiedades horizontales: control de propietarios, finanzas, reportes y gestión administrativa integral.</div>
+      <div class="project-tags">
+        <span class="tag">Python</span>
+        <span class="tag">Bases de datos</span>
+        <span class="tag">Dashboard UI</span>
+        <span class="tag">Automatización</span>
+      </div>
+    </div>
+
+    <!-- Proyecto 2 -->
+    <div class="project-card">
+      <div class="project-img">
+        <!--
+          INSTRUCCIÓN – Imagen de ETL / flujos:
+          <img src="etl_dashboard.jpg" alt="ETL Automatización" style="width:100%;height:100%;object-fit:cover;">
+        -->
+        <div class="project-img-placeholder">📸 Dashboard / flujo ETL aquí</div>
+      </div>
+      <div class="project-num">02</div>
+      <div class="project-title">Automatización & ETL</div>
+      <div class="project-desc">Procesos automatizados de extracción, transformación y carga de datos usando Python y herramientas de análisis. Reducción de tiempos operativos y mejora en calidad de datos.</div>
+      <div class="project-tags">
+        <span class="tag">Python</span>
+        <span class="tag">ETL</span>
+        <span class="tag">Excel</span>
+        <span class="tag">Power BI</span>
+      </div>
+    </div>
+
+    <!-- Proyecto 3 -->
+    <div class="project-card">
+      <div class="project-img">
+        <!--
+          INSTRUCCIÓN – Imagen de dashboards / KPIs:
+          <img src="dashboard_kpi.jpg" alt="Dashboards KPI" style="width:100%;height:100%;object-fit:cover;">
+        -->
+        <div class="project-img-placeholder">📸 Captura de dashboards / KPIs aquí</div>
+      </div>
+      <div class="project-num">03</div>
+      <div class="project-title">Dashboards Estratégicos</div>
+      <div class="project-desc">Visualización de indicadores clave de rendimiento para toma de decisiones en telecomunicaciones. Integración de múltiples fuentes de datos en reportes unificados.</div>
+      <div class="project-tags">
+        <span class="tag">Power BI</span>
+        <span class="tag">SQL</span>
+        <span class="tag">KPIs</span>
+        <span class="tag">Análisis</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+
+<!-- ============================================================
+     DISEÑO DIGITAL & BRANDING
+     ============================================================ -->
+<section id="diseno">
+  <div class="label">Diseño & Creatividad</div>
+  <h2>Diseño digital</h2>
+  <p style="color:var(--muted);font-size:0.9rem;margin-top:0.5rem;margin-bottom:2rem;">
+    Piezas publicitarias, branding y contenido visual para campañas digitales.
+  </p>
+
+  <div class="design-gallery fade-in">
+    <!--
+      INSTRUCCIÓN PARA GALERÍA DE DISEÑO:
+      Por cada pieza, reemplaza el div .design-placeholder por:
+      <img src="diseño1.jpg" alt="Pieza 1" style="width:100%;height:100%;object-fit:cover;">
+
+      Puedes agregar o quitar bloques .design-item según la cantidad de piezas que tengas.
+    -->
+    <div class="design-item"><div class="design-placeholder">📸 Pieza 1</div></div>
+    <div class="design-item"><div class="design-placeholder">📸 Pieza 2</div></div>
+    <div class="design-item"><div class="design-placeholder">📸 Pieza 3</div></div>
+    <div class="design-item"><div class="design-placeholder">📸 Pieza 4</div></div>
+    <div class="design-item"><div class="design-placeholder">📸 Pieza 5</div></div>
+    <div class="design-item"><div class="design-placeholder">📸 Pieza 6</div></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+
+<!-- ============================================================
+     CERTIFICACIONES
+     ============================================================ -->
+<section id="certificaciones">
+  <div class="label">Formación continua</div>
+  <h2>Certificaciones</h2>
+
+  <div class="certs-grid fade-in">
+
+    <div class="cert-card">
+      <div class="cert-issuer">Cisco Networking Academy</div>
+      <div class="cert-name">Networking Essentials</div>
+      <div class="cert-year">2020–2021</div>
+    </div>
+
+    <div class="cert-card">
+      <div class="cert-issuer">Cisco Networking Academy</div>
+      <div class="cert-name">Introduction to Cybersecurity</div>
+      <div class="cert-year">2020–2021</div>
+    </div>
+
+    <div class="cert-card">
+      <div class="cert-issuer">Cisco Networking Academy</div>
+      <div class="cert-name">Linux Essentials</div>
+      <div class="cert-year">2020–2021</div>
+    </div>
+
+    <div class="cert-card">
+      <div class="cert-issuer">LinkedIn Learning</div>
+      <div class="cert-name">What is Generative AI</div>
+      <div class="cert-year">Reciente</div>
+    </div>
+
+    <div class="cert-card">
+      <div class="cert-issuer">LinkedIn Learning</div>
+      <div class="cert-name">Generative AI Approaches to Business Challenges</div>
+      <div class="cert-year">Reciente</div>
+    </div>
+
+    <div class="cert-card">
+      <div class="cert-issuer">LinkedIn Learning</div>
+      <div class="cert-name">Ethics in the Age of Generative AI</div>
+      <div class="cert-year">Reciente</div>
+    </div>
+
+    <div class="cert-card">
+      <div class="cert-issuer">LinkedIn Learning</div>
+      <div class="cert-name">Liderazgo y Trabajo en Equipo</div>
+      <div class="cert-year">Reciente</div>
+    </div>
+
+    <div class="cert-card">
+      <div class="cert-issuer">INADEH</div>
+      <div class="cert-name">Agente de Soporte Técnico</div>
+      <div class="cert-year">2019</div>
+    </div>
+
+    <div class="cert-card">
+      <div class="cert-issuer">Fundación Carlos Slim</div>
+      <div class="cert-name">Prácticas de Ofimática</div>
+      <div class="cert-year">2022</div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+
+<!-- ============================================================
+     EDUCACIÓN
+     ============================================================ -->
+<section id="educacion">
+  <div class="label">Formación académica</div>
+  <h2>Educación</h2>
+
+  <div class="edu-grid fade-in">
+    <div class="edu-card">
+      <div class="edu-degree">Ingeniería Informática</div>
+      <div class="edu-institution">Universidad de Panamá</div>
+      <div class="edu-year">5to año · En curso</div>
+    </div>
+    <div class="edu-card">
+      <div class="edu-degree">Bachiller en Informática</div>
+      <div class="edu-institution">Escuela Artes y Oficios</div>
+      <div class="edu-year">2018 · Graduada</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+
+<!-- ============================================================
+     CONTACTO / CIERRE
+     ============================================================ -->
+<section id="contacto">
+  <div class="label">Hablemos</div>
+  <div class="contact-quote">
+    "Transformando datos, tecnología y <em>creatividad</em> en soluciones reales."
+  </div>
+
+  <div class="contact-links">
+    <a href="mailto:kadin02.a@gmail.com" class="contact-btn primary">✉ kadin02.a@gmail.com</a>
+    <a href="tel:60287688" class="contact-btn">📞 6028-7688</a>
+    <!--
+      INSTRUCCIÓN: Actualiza el href con tu URL real de LinkedIn
+    -->
+    <a href="https://linkedin.com" target="_blank" class="contact-btn">🔗 LinkedIn</a>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer>
+  <span>© 2025 Kadin Alveo · Panamá</span>
+  <span>Ingeniera Informática & Analista de Datos</span>
+</footer>
+
+
+<!-- ============================================================
+     JAVASCRIPT – Animaciones de entrada al hacer scroll
+     ============================================================ -->
+<script>
+  // Observador de intersección para animaciones de scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
